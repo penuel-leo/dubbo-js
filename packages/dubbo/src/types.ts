@@ -160,6 +160,7 @@ export interface IContextRequestParam {
   version: string;
   timeout: number;
   group: string;
+  traffic: string;
 }
 
 export interface IQueryObj {
@@ -170,6 +171,7 @@ export interface IQueryObj {
   methods: string;
   version: string;
   group: string;
+  traffic: string;
 }
 
 export type TQueueObserver = Function;

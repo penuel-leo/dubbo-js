@@ -19,6 +19,7 @@ export interface IDubboSetting {
   group?: string;
   version?: string;
   timeout?: number;
+  traffic?: string;
 }
 
 export type TPredictFunction = (

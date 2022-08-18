@@ -175,6 +175,7 @@ export default class Dubbo<TService = Object>
 
         ctx.dubboInterface = dubboInterface;
         ctx.version = setting.version;
+        ctx.traffic = setting.traffic;
         ctx.timeout = timeout;
         ctx.group = setting.group || '';
 

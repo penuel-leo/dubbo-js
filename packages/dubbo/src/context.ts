@@ -177,6 +177,15 @@ export default class Context<T = any> {
     return this._request.version;
   }
 
+  set traffic(traffic: string) {
+    log('requestId#%d set traffic: %s', this._request.requestId, traffic);
+    this._request.traffic = traffic;
+  }
+
+  get traffic() {
+    return this._request.traffic;
+  }
+
   get dubboVersion() {
     return this._request.dubboVersion;
   }

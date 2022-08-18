@@ -58,7 +58,7 @@ export default class Registry<T = {}> {
    * @param ctx
    */
   getAgentAddrMap(ctx: Context): {[name: string]: DubboUrl} {
-    const {dubboInterface, version, group} = ctx;
+    const {dubboInterface, version, group, traffic} = ctx;
     return this._dubboServiceUrlMap
       .get(dubboInterface)
       .filter(serviceProp => {
@@ -68,7 +68,9 @@ export default class Registry<T = {}> {
         //如果Group为null，就默认匹配， 不检查group
         //如果Group不为null，确保group和接口的group一致
         const isSameGroup = !group || group === serviceProp.group;
-        return isSameGroup && isSameVersion;
+        const isSameTraffic =
+          !traffic || traffic == '*' || serviceProp.traffic === traffic;
+        return isSameGroup && isSameVersion && isSameTraffic;
       })
       .reduce((reducer: Object, prop: DubboUrl) => {
         const {host, port} = prop;
